@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mavayya's Kitchen — YouTube Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1C0A00;--ink2:#3D1F00;--muted:#7A5C3E;
+  --parchment:#FDF5E6;--parchment2:#FAF0D7;
+  --spice:#C8420A;--gold:#D4961A;--gold2:#F0B530;
+  --leaf:#2D6A2D;--chili:#B01010;
+  --border:#E8D5B0;--border2:#D4B882;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);min-height:100vh;
+  background-image:radial-gradient(ellipse at 20% 10%,rgba(232,160,32,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(200,66,10,.05) 0%,transparent 50%);}
+
+/* HERO */
+.hero{background:var(--ink);position:relative;overflow:hidden;min-height:260px;display:flex;align-items:center;justify-content:center;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 10% 50%,rgba(200,66,10,.35) 0%,transparent 45%),radial-gradient(ellipse at 90% 50%,rgba(212,150,26,.3) 0%,transparent 45%),radial-gradient(ellipse at 50% 0%,rgba(240,106,0,.2) 0%,transparent 55%);}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(212,150,26,.4) 1px,transparent 1px),radial-gradient(circle,rgba(200,66,10,.3) 1px,transparent 1px);background-size:40px 40px,25px 25px;background-position:0 0,12px 12px;}
+.hero::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(212,150,26,.25);pointer-events:none;z-index:1;}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:36px 24px 28px;}
+.hero-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold2);margin-bottom:12px;opacity:.9;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.6rem);font-weight:900;color:#FFF8EE;line-height:1.05;margin-bottom:10px;text-shadow:0 2px 20px rgba(0,0,0,.4);}
+.hero h1 em{font-style:italic;color:var(--gold2);}
+.hero-sub{font-size:.9rem;color:rgba(255,248,238,.6);font-weight:300;max-width:380px;margin:0 auto;line-height:1.6;}
+.spice-row{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:18px;}
+.spice-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.6;}
+.spice-icon{font-size:1rem;opacity:.7;}
+
+main{max-width:780px;margin:0 auto;padding:32px 18px 80px;}
+
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:.63rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--spice);margin-bottom:12px;}
+.section-label::before,.section-label::after{content:'';display:block;width:18px;height:1px;background:var(--spice);opacity:.4;}
+
+.card{background:#FFFCF5;border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:18px;}
+.card-title{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:5px;line-height:1.3;}
+.card-sub{font-size:.83rem;color:var(--muted);margin-bottom:18px;line-height:1.6;font-weight:300;}
+.record-card{background:linear-gradient(160deg,#FFFCF5 60%,#FFF5E0);border:1.5px solid var(--border2);}
+
+/* MIC */
+.mic-zone{display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 0 16px;}
+.mic-ring{width:88px;height:88px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s,background .15s;}
+.mic-ring:hover{transform:scale(1.05);}
+.mic-ring.recording{background:var(--chili);animation:spice-pulse 1.3s ease-in-out infinite;}
+@keyframes spice-pulse{0%{box-shadow:0 0 0 0 rgba(176,16,16,.5);}70%{box-shadow:0 0 0 20px rgba(176,16,16,0);}100%{box-shadow:0 0 0 0 rgba(176,16,16,0);}}
+.mic-icon{font-size:1.9rem;line-height:1;}
+.mic-label{font-size:.75rem;font-weight:500;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
+.mic-label.active{color:var(--chili);}
+
+.divider-text{display:flex;align-items:center;gap:10px;color:var(--border2);font-size:.72rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin:14px 0;}
+.divider-text::before,.divider-text::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.recipe-input{width:100%;min-height:96px;background:#FFF9EE;border:1px solid var(--border);border-radius:12px;padding:13px 15px;font-family:'DM Sans',sans-serif;font-size:.91rem;color:var(--ink);line-height:1.7;resize:vertical;transition:border-color .2s;}
+.recipe-input:focus{outline:none;border-color:var(--gold);}
+.recipe-input::placeholder{color:#C0A880;font-style:italic;}
+
+/* CLARIFICATION BOX */
+.clarify-box{background:linear-gradient(135deg,#FFFDE8,#FFF8E0);border:1.5px solid #EDD87A;border-radius:14px;padding:20px;margin:16px 0 0;display:none;}
+.clarify-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.clarify-icon{font-size:1.3rem;}
+.clarify-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--ink);}
+.clarify-question{font-size:.88rem;color:var(--ink2);line-height:1.65;margin-bottom:14px;font-style:italic;}
+.clarify-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.clarify-btn{padding:8px 18px;border-radius:20px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .15s;border:1.5px solid var(--border2);background:#FFFCF5;color:var(--ink2);}
+.clarify-btn:hover{border-color:var(--spice);color:var(--spice);}
+.clarify-btn.primary{background:var(--ink);color:#FFF8EE;border-color:var(--ink);}
+.clarify-btn.primary:hover{background:var(--ink2);}
+.clarify-input{width:100%;background:#FFF9EE;border:1px solid var(--border);border-radius:10px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--ink);margin-bottom:10px;display:none;}
+.clarify-input:focus{outline:none;border-color:var(--gold);}
+
+/* LLM */
+.llm-selector{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 18px;}
+.llm-opt{display:flex;align-items:center;gap:7px;background:#FFF5E0;border:1.5px solid var(--border);border-radius:28px;padding:7px 14px;cursor:pointer;transition:border-color .15s,background .15s;font-size:.78rem;font-weight:500;color:var(--ink2);user-select:none;}
+.llm-opt:hover{border-color:var(--gold);}
+.llm-opt.active{border-color:var(--spice);background:#FFF0E0;color:var(--spice);}
+.llm-dot{width:7px;height:7px;border-radius:50%;}
+.key-row{display:flex;align-items:center;gap:10px;margin:0 0 18px;}
+.key-input{flex:1;background:#FFF9EE;border:1px solid var(--border);border-radius:10px;padding:9px 13px;font-family:'DM Sans',sans-serif;font-size:.83rem;color:var(--ink);}
+.key-input:focus{outline:none;border-color:var(--gold);}
+.key-label{font-size:.73rem;font-weight:500;color:var(--muted);white-space:nowrap;}
+.key-note{font-size:.7rem;color:var(--muted);margin:-12px 0 16px;font-style:italic;opacity:.7;}
+
+.gen-btn{width:100%;padding:16px;background:var(--ink);color:#FFF8EE;font-family:'DM Sans',sans-serif;font-size:.97rem;font-weight:600;border:none;border-radius:13px;cursor:pointer;letter-spacing:.4px;transition:transform .15s,background .15s;display:flex;align-items:center;justify-content:center;gap:9px;}
+.gen-btn:hover:not(:disabled){background:var(--ink2);transform:translateY(-1px);}
+.gen-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+/* LOADING */
+.loading-state{display:none;flex-direction:column;align-items:center;gap:14px;padding:48px 24px;text-align:center;}
+.loading-karahi{font-size:2.6rem;animation:stir 2s ease-in-out infinite;transform-origin:center bottom;}
+@keyframes stir{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+.loading-text{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--spice);font-style:italic;}
+.loading-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin:0 3px;animation:dot-bounce 1.2s infinite ease-in-out;}
+.loading-dots span:nth-child(2){animation-delay:.2s;}
+.loading-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes dot-bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-7px);}}
+
+/* RECIPE BANNER */
+.recipe-banner{background:var(--ink);border-radius:16px;padding:26px 26px 22px;margin-bottom:18px;position:relative;overflow:hidden;}
+.recipe-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 100%,rgba(200,66,10,.4) 0%,transparent 55%),radial-gradient(ellipse at 100% 0%,rgba(212,150,26,.3) 0%,transparent 55%);}
+.rb-inner{position:relative;z-index:1;}
+.rb-eyebrow{font-size:.63rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;opacity:.8;}
+.rb-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:700;color:#FFF8EE;line-height:1.15;margin-bottom:12px;}
+.rb-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
+.rb-pill{background:rgba(255,248,238,.1);border:1px solid rgba(255,248,238,.2);border-radius:20px;padding:4px 13px;font-size:.76rem;font-weight:500;color:rgba(255,248,238,.85);}
+.rb-overview{font-size:.88rem;color:rgba(255,248,238,.6);line-height:1.7;font-weight:300;font-style:italic;}
+
+/* RECIPE SUMMARY CARD */
+.recipe-summary-card{background:#FFFCF5;border:1px solid var(--border);border-radius:16px;padding:26px;margin-bottom:18px;}
+.rs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:520px){.rs-two-col{grid-template-columns:1fr;}}
+.rs-col-title{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--ink);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.ingredient-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.ingredient-list li{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;color:var(--ink2);line-height:1.5;}
+.ingredient-list li::before{content:'·';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px;}
+.steps-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.steps-list li{display:flex;gap:10px;font-size:.82rem;color:var(--ink2);line-height:1.55;}
+.step-num-small{min-width:20px;height:20px;border-radius:50%;background:var(--spice);color:#FFF8EE;font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+
+/* SHOTS */
+.shots-stack{display:flex;flex-direction:column;gap:11px;}
+.shot{background:#FFFCF5;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:54px 1fr;transition:border-color .2s;}
+.shot:hover{border-color:var(--border2);}
+.shot-num-col{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:16px 0;background:#FAF3E0;border-right:1px solid var(--border);gap:7px;}
+.shot-num-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;color:#FFFCF5;}
+.shot-type-pip{width:5px;height:5px;border-radius:50%;opacity:.5;}
+.shot-body{padding:14px 17px;}
+.shot-header-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px;flex-wrap:wrap;}
+.shot-titles{display:flex;flex-direction:column;gap:2px;}
+.shot-title{font-family:'DM Serif Display',serif;font-size:.98rem;color:var(--ink);line-height:1.2;}
+.shot-kidname{font-size:.72rem;font-weight:600;color:var(--gold);letter-spacing:.3px;font-style:italic;}
+.shot-type-tag{font-size:.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.shot-desc{font-size:.86rem;color:var(--ink2);line-height:1.7;margin-bottom:9px;font-weight:300;}
+.shot-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{display:flex;align-items:center;gap:5px;background:var(--parchment2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:.73rem;font-weight:500;color:var(--muted);}
+
+
+/* shot type colors */
+.t-intro .shot-num-circle{background:var(--leaf);}
+.t-intro .shot-type-tag{background:#EAF3DE;color:#2D5A2D;}
+.t-intro .shot-type-pip{background:var(--leaf);}
+.t-broll .shot-num-circle{background:var(--gold);}
+.t-broll .shot-type-tag{background:#FFF3D0;color:#8A6010;}
+.t-broll .shot-type-pip{background:var(--gold);}
+.t-closeup .shot-num-circle{background:var(--spice);}
+.t-closeup .shot-type-tag{background:#FFE8E0;color:#8A2800;}
+.t-closeup .shot-type-pip{background:var(--spice);}
+.t-action .shot-num-circle{background:var(--chili);}
+.t-action .shot-type-tag{background:#FFE0E0;color:#7A0000;}
+.t-action .shot-type-pip{background:var(--chili);}
+.t-outro .shot-num-circle{background:#5C4A8A;}
+.t-outro .shot-type-tag{background:#EEE8FF;color:#3C2870;}
+.t-outro .shot-type-pip{background:#5C4A8A;}
+
+/* CHECKLIST */
+.checklist-card{background:linear-gradient(150deg,#FFFCF0,#FFF6E0);border:1.5px solid #EDCF80;border-radius:16px;padding:26px;margin-bottom:18px;}
+.checklist-heading{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:3px;}
+.checklist-sub{font-size:.8rem;color:var(--muted);margin-bottom:18px;font-weight:300;font-style:italic;}
+.checklist-list{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.cl-item{display:flex;align-items:flex-start;gap:12px;}
+.cl-num{min-width:28px;height:28px;border-radius:50%;background:var(--ink);color:#FFF8EE;font-family:'Playfair Display',serif;font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.cl-text{font-size:.88rem;line-height:1.65;color:var(--ink2);padding-top:3px;}
+
+/* SHORTS */
+.shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:13px;}
+.short-card{background:#FFFCF5;border:1px solid var(--border);border-radius:14px;padding:18px;transition:border-color .2s,transform .15s;}
+.short-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.short-emoji{font-size:1.7rem;margin-bottom:9px;display:block;}
+.short-title{font-family:'DM Serif Display',serif;font-size:.92rem;color:var(--ink);margin-bottom:5px;line-height:1.3;}
+.short-desc{font-size:.78rem;color:var(--muted);line-height:1.6;font-weight:300;}
+
+.ornament{text-align:center;color:var(--border2);font-size:.95rem;letter-spacing:8px;margin:20px 0 17px;user-select:none;}
+.restart-btn{display:block;margin:26px auto 0;padding:11px 34px;background:transparent;border:1.5px solid var(--border2);border-radius:28px;font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:500;color:var(--muted);cursor:pointer;transition:border-color .15s,color .15s;}
+.restart-btn:hover{border-color:var(--spice);color:var(--spice);}
+@media(max-width:500px){.hero h1{font-size:1.9rem;}.shot{grid-template-columns:42px 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">A family cooking project</p>
+    <h1><em>Mavayya's</em><br>Kitchen</h1>
+    <p class="hero-sub">Uncle speaks the recipe · AI crafts the shooting guide · Daughter films the magic</p>
+    <div class="spice-row">
+      <div class="spice-dot"></div><span class="spice-icon">🌶</span>
+      <div class="spice-dot"></div><span class="spice-icon">🫚</span>
+      <div class="spice-dot"></div><span class="spice-icon">🌿</span>
+      <div class="spice-dot"></div><span class="spice-icon">🎬</span>
+      <div class="spice-dot"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- INPUT -->
+  <div class="card record-card" id="input-card">
+    <div class="section-label">Step one</div>
+    <p class="card-title">What's cooking today, Mavayya?</p>
+    <p class="card-sub">Speak the recipe or type it below — no need to be perfect, we'll ask if we need more details!</p>
+
+    <div class="mic-zone">
+      <div class="mic-ring" id="mic-btn"><span class="mic-icon">🎤</span></div>
+      <span class="mic-label" id="mic-label">Tap to describe the recipe</span>
+    </div>
+
+    <div class="divider-text">or write it here</div>
+
+    <textarea class="recipe-input" id="recipe-text" rows="4"
+      placeholder="e.g. Dal Makhani — soak black lentils overnight, pressure cook, make a butter-tomato masala with ginger garlic, slow cook everything for an hour, finish with cream..."></textarea>
+
+    <!-- CLARIFICATION BOX (shown after first AI check) -->
+    <div class="clarify-box" id="clarify-box">
+      <div class="clarify-header">
+        <span class="clarify-icon">🤔</span>
+        <span class="clarify-title">Just one quick question!</span>
+      </div>
+      <p class="clarify-question" id="clarify-question"></p>
+      <input class="clarify-input recipe-input" id="clarify-answer" placeholder="Type your answer here..."/>
+      <div class="clarify-btns">
+        <button class="clarify-btn primary" onclick="submitClarification()">Add this detail ✓</button>
+        <button class="clarify-btn" onclick="skipClarification()">Skip — just make the guide!</button>
+      </div>
+    </div>
+
+    <div class="ornament" style="margin:18px 0 14px">· · ·</div>
+    <div class="section-label">Choose AI model</div>
+    <div class="llm-selector">
+      <div class="llm-opt active" data-model="claude"><span class="llm-dot" style="background:#C8420A"></span>Claude</div>
+      <div class="llm-opt" data-model="openai"><span class="llm-dot" style="background:#10A37F"></span>GPT-4o</div>
+      <div class="llm-opt" data-model="groq"><span class="llm-dot" style="background:#F55036"></span>Llama 3 (Groq)</div>
+      <div class="llm-opt" data-model="gemini"><span class="llm-dot" style="background:#4285F4"></span>Gemini</div>
+    </div>
+    <div class="key-row">
+      <span class="key-label">API Key</span>
+      <input class="key-input" id="api-key" type="password" placeholder="Paste your API key here"/>
+    </div>
+    <p class="key-note">Stays in your browser only — never sent anywhere else.</p>
+
+    <button class="gen-btn" id="gen-btn" onclick="startFlow()">
+      <span>🎬</span> Create Shooting Guide
+    </button>
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading-state" id="loading">
+    <div class="loading-karahi">🫕</div>
+    <p class="loading-text" id="loading-text">Simmering your guide...</p>
+    <div class="loading-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div id="output" style="display:none">
+
+    <!-- Recipe banner -->
+    <div class="recipe-banner">
+      <div class="rb-inner">
+        <p class="rb-eyebrow">Today's dish</p>
+        <h2 class="rb-title" id="rb-title"></h2>
+        <div class="rb-pills" id="rb-pills"></div>
+        <p class="rb-overview" id="rb-overview"></p>
+      </div>
+    </div>
+
+    <!-- Recipe Summary -->
+    <div class="recipe-summary-card">
+      <div class="section-label">Recipe summary</div>
+      <p class="card-title" style="margin-bottom:18px">The full recipe</p>
+      <div class="rs-two-col">
+        <div>
+          <p class="rs-col-title">🧅 Ingredients</p>
+          <ul class="ingredient-list" id="ingredient-list"></ul>
+        </div>
+        <div>
+          <p class="rs-col-title">🔥 Steps</p>
+          <ol class="steps-list" id="steps-list"></ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shot list -->
+    <div class="card" style="padding-bottom:22px">
+      <div class="section-label">Shot list</div>
+      <p class="card-title">What to film &amp; when</p>
+      <p class="card-sub">Follow these shots in order. Each one tells you exactly what to film and how to hold your phone. 🎥</p>
+      <div class="shots-stack" id="shots-stack"></div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="checklist-card">
+      <div class="section-label">Director's checklist</div>
+      <p class="checklist-heading">Your game plan 📋</p>
+      <p class="checklist-sub">Do these in order, superstar. You've totally got this!</p>
+      <ul class="checklist-list" id="checklist-list"></ul>
+    </div>
+
+    <div class="ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+    <!-- Shorts -->
+    <div class="card">
+      <div class="section-label">Bonus shorts</div>
+      <p class="card-title">YouTube Shorts ideas</p>
+      <p class="card-sub">Quick 60-second clips to post and get tons of views!</p>
+      <div class="shorts-grid" id="shorts-grid"></div>
+    </div>
+
+    <button class="restart-btn" onclick="restart()">← Try another recipe</button>
+  </div>
+
+</main>
+
+<script>
+// ── SPEECH REC ──
+let recog=null,isRec=false;
+const micBtn=document.getElementById('mic-btn');
+const micLabel=document.getElementById('mic-label');
+const recipeText=document.getElementById('recipe-text');
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){
+  recog=new SR();recog.continuous=true;recog.interimResults=true;recog.lang='en-IN';
+  let fin='';
+  recog.onresult=e=>{let int='';for(let i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)fin+=e.results[i][0].transcript+' ';else int+=e.results[i][0].transcript;}recipeText.value=fin+int;};
+  recog.onerror=()=>stopRec();recog.onend=()=>{if(isRec)stopRec();};
+  micBtn.onclick=()=>{
+    if(!isRec){fin=recipeText.value;recog.start();isRec=true;micBtn.classList.add('recording');micBtn.querySelector('.mic-icon').textContent='⏹';micLabel.textContent='Recording… tap to stop';micLabel.classList.add('active');}
+    else stopRec();
+  };
+}else{micBtn.style.opacity='.4';micLabel.textContent='Voice not supported — please type below';}
+function stopRec(){if(recog)recog.stop();isRec=false;micBtn.classList.remove('recording');micBtn.querySelector('.mic-icon').textContent='🎤';micLabel.textContent='✓ Done — check text below';micLabel.classList.remove('active');}
+
+let selectedModel='claude';
+document.querySelectorAll('.llm-opt').forEach(el=>{
+  el.onclick=()=>{document.querySelectorAll('.llm-opt').forEach(e=>e.classList.remove('active'));el.classList.add('active');selectedModel=el.dataset.model;};
+});
+
+// ── API CALL ──
+async function callAPI(messages,key,maxTokens=4000){
+  let d;
+  try{
+    let r,text;
+    if(selectedModel==='claude'){
+      r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key||'x','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTokens,messages})});
+      d=await r.json();
+      if(d.error)throw new Error('Claude error: '+d.error.message);
+      if(!d.content||!d.content.length)throw new Error('Claude returned empty. Is your API key correct?');
+      return d.content.map(b=>b.text||'').join('');
+    }else if(selectedModel==='openai'){
+      r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:'gpt-4o',max_tokens:maxTokens,messages:messages.map(m=>({role:m.role,content:m.content}))})});
+      d=await r.json();
+      if(d.error)throw new Error('OpenAI error: '+d.error.message);
+      if(!d.choices||!d.choices.length)throw new Error('OpenAI returned empty. Check your API key at platform.openai.com');
+      return d.choices[0].message.content;
+    }else if(selectedModel==='groq'){
+      r=await fetch('https://api.groq.com/openai/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},body:JSON.stringify({model:'llama-3.3-70b-versatile',max_tokens:Math.min(maxTokens,2000),messages:messages.map(m=>({role:m.role,content:m.content}))})});
+      d=await r.json();
+      if(d.error)throw new Error('Groq error: '+(d.error.message||d.error.error||JSON.stringify(d.error)));
+      if(!d.choices||!d.choices.length)throw new Error('Groq returned empty. Get a free key at console.groq.com');
+      return d.choices[0].message.content;
+    }else if(selectedModel==='gemini'){
+      r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:messages.map(m=>({role:m.role==='assistant'?'model':'user',parts:[{text:m.content}]}))})});
+      d=await r.json();
+      if(d.error)throw new Error('Gemini error: '+d.error.message);
+      if(!d.candidates||!d.candidates.length)throw new Error('Gemini returned empty. Check your API key at aistudio.google.com');
+      return d.candidates[0].content.parts[0].text;
+    }
+  }catch(e){
+    const extra=d?(' | Response: '+JSON.stringify(d).slice(0,150)):'';
+    throw new Error(e.message+extra);
+  }
+}
+
+// ── CLARIFICATION PROMPT ──
+const CLARIFY_PROMPT=`You are an assistant for a family Indian cooking YouTube channel. An uncle described his recipe (vaguely or in detail). Your job: decide if you need ONE clarifying question to make a better filming guide — or if you have enough.
+
+Recipe: """{RECIPE}"""
+
+Rules:
+- If the recipe is clear enough (dish name + main steps known), respond: {"needsClarification":false}
+- If something important is missing (e.g. completely unclear dish, no steps at all), ask ONE short friendly question
+- Respond ONLY with raw JSON: {"needsClarification":true,"question":"your one question here"} or {"needsClarification":false}
+- Keep the question casual and warm, like talking to a friendly uncle`;
+
+// ── GUIDE PROMPT ──
+const GUIDE_PROMPT=`You are an AI assistant for a family Indian cooking YouTube channel. Uncle described his recipe. His 11-year-old daughter will film it.
+
+CRITICAL RULES FOR SHOTS:
+- NEVER include any shot showing the uncle's face or any person's face — no selfies, no talking-to-camera, no face shots AT ALL
+- All shots must be of: food, hands, pots/pans, ingredients, steam, close-ups of cooking — NEVER a person's face
+- Uncle does NOT want to be seen on camera at all
+
+Recipe: """{RECIPE}"""
+
+Return ONLY raw JSON (no markdown). Schema:
+{
+  "recipeName":"dish name",
+  "cuisine":"Indian region e.g. Punjabi",
+  "cookTime":"e.g. 40 mins",
+  "difficulty":"Easy",
+  "servings":"4",
+  "overview":"One fun hype sentence for YouTube viewers.",
+  "ingredients":["ingredient with quantity","..."],
+  "recipeSteps":["Step description","..."],
+  "shots":[
+    {"number":1,"title":"Descriptive shot title","kidName":"Silly name an 11yr old would give this shot e.g. The Spice Rainbow Shot","type":"intro","description":"One clear sentence: exactly what to film, no faces.","cameraAngle":"e.g. Overhead","duration":"10 sec","kidTip":"One encouraging tip."},
+    {"number":2,"title":"","kidName":"","type":"broll","description":"","cameraAngle":"","duration":"","kidTip":""},
+    {"number":3,"title":"","kidName":"","type":"closeup","description":"","cameraAngle":"","duration":"","kidTip":""},
+    {"number":4,"title":"","kidName":"","type":"action","description":"","cameraAngle":"","duration":"","kidTip":""},
+    {"number":5,"title":"","kidName":"","type":"closeup","description":"","cameraAngle":"","duration":"","kidTip":""},
+    {"number":6,"title":"","kidName":"","type":"outro","description":"","cameraAngle":"","duration":"","kidTip":""}
+  ],
+  "kidsChecklist":["Step 1 — short and fun.","Step 2.","Step 3.","Step 4.","Step 5.","Step 6."],
+  "shortsIdeas":[
+    {"emoji":"🍛","title":"Short title","description":"One sentence idea, no faces."},
+    {"emoji":"🔥","title":"Short title","description":"One sentence."},
+    {"emoji":"😋","title":"Short title","description":"One sentence."}
+  ]
+}
+Rules: exactly 6 shots, 4-6 ingredients, 4-6 recipe steps, 6 checklist items, 3 shorts. Keep strings concise. kidName must sound like something a funny 11-year-old named (e.g. "The Golden Pour", "Spicy Splash Moment", "The Big Stir Scene"). ZERO face shots.`;
+
+// ── FLOW STATE ──
+let recipeRaw='';
+let clarifyDone=false;
+
+async function startFlow(){
+  recipeRaw=recipeText.value.trim();
+  if(!recipeRaw||recipeRaw.length<8){alert('Please describe the recipe first!');return;}
+  const key=document.getElementById('api-key').value.trim();
+  if(selectedModel!=='claude'&&!key){alert('Please paste your API key for the selected model.');return;}
+
+  // If clarification already done or box is visible, go straight to guide
+  if(clarifyDone){generateGuide(key);return;}
+
+  // Check if clarification needed
+  setLoading(true,'Checking your recipe description...');
+  try{
+    const clarifyPromptFilled=CLARIFY_PROMPT.replace('{RECIPE}',recipeRaw);
+    const raw=await callAPI([{role:'user',content:clarifyPromptFilled}],key,600);
+    const clean=raw.replace(/```json|```/g,'').trim();
+    // Extract just the JSON object in case there's extra text
+    const match=clean.match(/\{[\s\S]*\}/);
+    if(!match)throw new Error('no json');
+    const result=JSON.parse(match[0]);
+    setLoading(false);
+    if(result.needsClarification&&result.question){
+      showClarification(result.question);
+    }else{
+      clarifyDone=true;
+      generateGuide(key);
+    }
+  }catch(e){
+    // Any failure in clarification check → just go ahead and generate
+    setLoading(false);
+    clarifyDone=true;
+    generateGuide(key);
+  }
+}
+
+function showClarification(question){
+  document.getElementById('clarify-question').textContent=question;
+  document.getElementById('clarify-answer').style.display='block';
+  document.getElementById('clarify-box').style.display='block';
+  document.getElementById('gen-btn').textContent='Regenerate Guide';
+  document.getElementById('clarify-box').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function submitClarification(){
+  const answer=document.getElementById('clarify-answer').value.trim();
+  if(answer){
+    recipeText.value=recipeText.value.trim()+'\n\nExtra detail: '+answer;
+    recipeRaw=recipeText.value.trim();
+  }
+  clarifyDone=true;
+  document.getElementById('clarify-box').style.display='none';
+  const key=document.getElementById('api-key').value.trim();
+  generateGuide(key);
+}
+
+function skipClarification(){
+  clarifyDone=true;
+  document.getElementById('clarify-box').style.display='none';
+  const key=document.getElementById('api-key').value.trim();
+  generateGuide(key);
+}
+
+async function generateGuide(key){
+  setLoading(true,'Cooking up your guide...');
+  document.getElementById('output').style.display='none';
+  try{
+    const guidePromptFilled=GUIDE_PROMPT.replace('{RECIPE}',recipeRaw);
+    const raw=await callAPI([{role:'user',content:guidePromptFilled}],key,4000);
+    const guide=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    render(guide);
+  }catch(err){
+    console.error(err);
+    setLoading(false);
+    document.getElementById('input-card').style.display='block';
+    alert('Error: '+err.message+'\n\nCheck your API key and try again.');
+  }
+}
+
+function setLoading(show,text=''){
+  const lEl=document.getElementById('loading');
+  const iEl=document.getElementById('input-card');
+  if(show){
+    document.getElementById('loading-text').textContent=text||'Simmering your guide...';
+    lEl.style.display='flex';
+    iEl.style.display='none';
+  }else{
+    lEl.style.display='none';
+    iEl.style.display='block';
+  }
+}
+
+// ── RENDER ──
+const typeLabels={intro:'Intro',broll:'B-Roll',closeup:'Close-up',action:'Action',outro:'Outro'};
+
+function render(g){
+  document.getElementById('loading').style.display='none';
+
+  // Banner
+  document.getElementById('rb-title').textContent=g.recipeName||'Your Recipe';
+  document.getElementById('rb-overview').textContent=g.overview||'';
+  const pills=document.getElementById('rb-pills');
+  pills.innerHTML='';
+  [['🌍',g.cuisine],['⏱',g.cookTime],['📊',g.difficulty],['🍽',g.servings+' servings']]
+    .forEach(([icon,v])=>{if(v){const p=document.createElement('span');p.className='rb-pill';p.textContent=icon+' '+v;pills.appendChild(p);}});
+
+  // Recipe summary
+  const ingList=document.getElementById('ingredient-list');
+  ingList.innerHTML='';
+  (g.ingredients||[]).forEach(ing=>{ingList.innerHTML+=`<li>${ing}</li>`;});
+
+  const stepList=document.getElementById('steps-list');
+  stepList.innerHTML='';
+  (g.recipeSteps||[]).forEach((step,i)=>{
+    stepList.innerHTML+=`<li><span class="step-num-small">${i+1}</span><span>${step}</span></li>`;
+  });
+
+  // Shots
+  const stack=document.getElementById('shots-stack');
+  stack.innerHTML='';
+  (g.shots||[]).forEach(s=>{
+    const t=s.type||'broll';
+    stack.innerHTML+=`
+    <div class="shot t-${t}">
+      <div class="shot-num-col">
+        <div class="shot-num-circle">${s.number}</div>
+        <div class="shot-type-pip"></div>
+      </div>
+      <div class="shot-body">
+        <div class="shot-header-row">
+          <div class="shot-titles">
+            <span class="shot-title">${s.title}</span>
+            ${s.kidName?`<span class="shot-kidname">"${s.kidName}"</span>`:''}
+          </div>
+          <span class="shot-type-tag">${typeLabels[t]||t}</span>
+        </div>
+        <p class="shot-desc">${s.description}</p>
+        <div class="shot-chips">
+          <span class="chip">📐 ${s.cameraAngle}</span>
+          <span class="chip">⏱ ${s.duration}</span>
+          <span class="chip">💡 ${s.kidTip}</span>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  // Checklist
+  const cl=document.getElementById('checklist-list');
+  cl.innerHTML='';
+  (g.kidsChecklist||[]).forEach((step,i)=>{
+    cl.innerHTML+=`<li class="cl-item"><div class="cl-num">${i+1}</div><span class="cl-text">${step}</span></li>`;
+  });
+
+  // Shorts
+  const sg=document.getElementById('shorts-grid');
+  sg.innerHTML='';
+  (g.shortsIdeas||[]).forEach(s=>{
+    sg.innerHTML+=`<div class="short-card"><span class="short-emoji">${s.emoji}</span><p class="short-title">${s.title}</p><p class="short-desc">${s.description}</p></div>`;
+  });
+
+  document.getElementById('output').style.display='block';
+  document.getElementById('output').scrollIntoView({behavior:'smooth'});
+}
+
+function restart(){
+  document.getElementById('output').style.display='none';
+  document.getElementById('input-card').style.display='block';
+  document.getElementById('clarify-box').style.display='none';
+  document.getElementById('clarify-answer').style.display='none';
+  document.getElementById('clarify-answer').value='';
+  document.getElementById('gen-btn').innerHTML='<span>🎬</span> Create Shooting Guide';
+  recipeText.value='';
+  recipeRaw='';
+  clarifyDone=false;
+  micLabel.textContent='Tap to describe the recipe';
+  micLabel.classList.remove('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
